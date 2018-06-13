@@ -1,0 +1,12 @@
+
+
+
+*.swp
+*.un~
+*~
+
+*.aux
+*.dvi
+*.latex~
+*.log
+*.toc

@@ -1,0 +1,30 @@
+\documentclass[12pt]{report}
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {images/} } 
+
+
+
+\begin{document}
+
+\title{
+    {Coda 2}\\
+    {\large TU-Berlin}\\
+}
+
+\author{Robin Ruth}
+\date{13.06.2018}
+
+\maketitle
+
+\chapter*{Abstract}
+
+\chapter*{Getting shit done}
+
+\chapter*{Appendix}
+
+\tableofcontents
+
+\end{document}
