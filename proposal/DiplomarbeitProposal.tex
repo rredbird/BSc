@@ -1,0 +1,63 @@
+\documentclass[12pt,a4paper,titlepage,oneside,BCOR1cm]{scrreprt}
+
+\usepackage{ngerman} % neue deutsche Rechtschreibung
+\usepackage[latin1]{inputenc}
+\usepackage[ngerman]{babel} % Silbentrennung
+\usepackage{amsmath,amstext,amssymb}
+
+\usepackage{setspace} % 1,5 Zeilenabstand
+\onehalfspacing
+\usepackage[T1]{fontenc} 
+\usepackage{bibgerm}
+\pagestyle{headings}
+
+
+\usepackage{ulem}
+\normalem %�nderung von \em und \emph nicht zulassen
+
+\usepackage{graphicx} % Bilder einf�gen
+\usepackage{color} % Farben
+\usepackage{subfigure} % mehrere Abbildungen nebeneinander/�bereinander
+\usepackage{latexsym}
+\usepackage{fancyhdr} %Kopf- und Fu�zeilen
+\bibliographystyle{gerunsrt} % Literaturangaben nach Auftreten sortieren %{gerplain}
+
+\usepackage[pagebackref,pdfpagelabels]{hyperref} %Hyperlinks zw. Textstellen
+
+
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hier bitte Werte �ndern %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\date{\today} %{September 2006}
+\author{DAI-Labor}
+\title{Dokumentenvorlage f�r ein Diplomarbeitsproposal} % Bitte unter chapter/deckblatt.tex �ndern!!
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+%Beginn des Dokuments
+\begin{document}
+%\maketitle
+
+\pagenumbering{Roman} % R�mische Aufz�hlung
+\include{chapter/deckblatt} % Titelseite
+\tableofcontents % Inhaltsverzeichnis
+\addcontentsline{toc}{chapter}{Inhaltsverzeichnis} % Auch Inhaltsverzeichnis aufnehmen
+\newpage
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+
+% Hauptteil
+\pagenumbering{arabic} % Normale Aufz�hlung
+\include{chapter/proposal}
+
+
+\newpage
+
+%�bernehme alle Referenzen aus chapter/bibliography.bib
+\nocite{*}
+\bibliography{chapter/bibliography} % Literaturverzeichnis
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+%\appendix % andere Aufz�hlung
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Hier kommen die Anh�nge %%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%\include{chapter/anhanga}
+%\include{chapter/anhangb}
+\end{document}
+
