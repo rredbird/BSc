@@ -1,0 +1,98 @@
+\documentclass[12pt,a4paper,titlepage,oneside,BCOR1cm]{scrreprt}
+
+
+
+\usepackage[utf8]{inputenc}
+\usepackage{graphicx}
+\graphicspath{ {images/} } 
+\usepackage{fancyhdr}
+\usepackage{graphicx}
+\usepackage[pagebackref,pdfpagelabels]{hyperref}
+\usepackage{amsmath,amstext,amssymb}
+
+\bibliographystyle{gerunsrt} % Literaturangaben nach Auftreten sortieren %{gerplain}
+
+\date{\today}
+\author{Robin Maximilian Ruth}
+\title{Bachelorthesis proposal -- Sparked}
+
+\begin{document}
+\thispagestyle{empty}
+
+\begin{figure}[htbp]
+\centering
+ \begin{minipage}[b]{41 mm}
+   \includegraphics[width=40 mm]{./figures/DAI_Logo.png}
+ \end{minipage}
+\end{figure}
+
+~\vspace{0.5cm}
+
+\begin{center}
+\begin{Huge}
+Technische Universitaet Berlin\\
+\vspace{1mm}
+\end{Huge}{\Large Fakultaet IV - Elektrotechnik und Informatik\\
+Fachgebiet AOT\\
+Prof. Dr. Sahin Albayrak}\\
+
+\vspace{26mm}
+\begin{LARGE}
+Bachelorthesis proposal\\
+\end{LARGE}
+\vspace{8mm}
+\begin{LARGE}
+Sparked, an intuitive user interface for the automated machine learning project CODA\\
+\end{LARGE}
+\vspace{3 cm}
+Robin Ruth\\
+Matrikel--Nummer 316672\\
+\vspace{1cm}
+\begin{tabular}{lll}
+    \textbf{Betreuer} & Researcher Christian Geissler & Dipl.-Inform. ABC\\
+\end{tabular}
+
+\end{center}
+
+\tableofcontents
+\thispagestyle{empty}
+%\addcontentsline{toc}{chapter}{Inhaltsverzeichnis} 
+
+
+\pagenumbering{arabic}
+\chapter{Motivation}
+
+\chapter{Objective}
+
+\chapter{Work packages}
+
+\chapter{Schedule}
+The time allotted to a bachelor thesis as defined in my examination regulation (StuPO-BSc-INF-2014) is 20 weeks.
+
+\chapter{Organizational}
+\begin{itemize}
+\item Language of this Bachelorthesis is english.
+\item The thesis will be written with pdflatex.
+\item The programming of the user interface uses several languages and technologies. 
+    \begin{itemize}
+        \item Java with Spring MVC for the backend
+        \item Angular 5 (typescript) and css for the frontend
+        \item MongoDB for data persistence
+        \item chart.js to diplay results in charts
+        \item Jackson 2 for automated conversion of data between JSON files and Java objects
+        \item Docker on linux as hosting system for all used systems
+    \end{itemize}
+\item Supervisors is Christian Geißler
+\item Evaluators are Prof. Dr. Albayrak and Prof. Kao
+\item 
+\end{itemize}
+
+\chapter{Appendix}
+
+\newpage
+
+\nocite{*}
+\bibliography{chapter/bibliography} % Literaturverzeichnis
+\addcontentsline{toc}{chapter}{Literaturverzeichnis}
+
+\end{document}
