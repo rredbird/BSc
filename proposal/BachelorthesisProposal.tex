@@ -37,20 +37,19 @@
 %\maketitle
 
 \pagenumbering{Roman} % R�mische Aufz�hlung
-\include{chapter/deckblatt} % Titelseite
-\tableofcontents % Inhaltsverzeichnis
-\addcontentsline{toc}{chapter}{Inhaltsverzeichnis} % Auch Inhaltsverzeichnis aufnehmen
+\include{chapter/deckblatt} 
+\tableofcontents 
+\addcontentsline{toc}{chapter}{Inhaltsverzeichnis} 
 \newpage
-%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
 
-% Hauptteil
-\pagenumbering{arabic} % Normale Aufz�hlung
+
+
+\pagenumbering{arabic} 
 \include{chapter/proposal}
 
 
 \newpage
 
-%�bernehme alle Referenzen aus chapter/bibliography.bib
 \nocite{*}
 \bibliography{chapter/bibliography} % Literaturverzeichnis
 \addcontentsline{toc}{chapter}{Literaturverzeichnis}
