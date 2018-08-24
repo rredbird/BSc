@@ -1,5 +1,7 @@
-[0] Config.pm:302> INFO - This is Biber 2.11
-[0] Config.pm:305> INFO - Logfile is 'bachelorarbeit-robin-ruth.v2.blg'
-[40] biber-MSWIN64:313> INFO - === 
-[649] Utils.pm:209> ERROR - Cannot find control file 'bachelorarbeit-robin-ruth.v2.bcf'! - Did latex run successfully on your .tex file before you ran biber?
-[649] Biber.pm:114> INFO - ERRORS: 1
+This is BibTeX, Version 0.99dThe top-level auxiliary file: bachelorarbeit-robin-ruth.v2.aux
+The style file: biblatex.bst
+Database file #1: bachelorarbeit-robin-ruth.v2-blx.bib
+Database file #2: bibliography.bib
+Warning--I didn't find a database entry for "inproceedings"
+Biblatex version: 3.8
+(There was 1 warning)
