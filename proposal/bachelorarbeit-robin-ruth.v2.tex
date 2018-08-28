@@ -79,23 +79,15 @@ With this project, nicknamed Sparked, we create an interface to the CODA project
 As such we will provide a user interface that is usable in demonstrations and can be used by persons with a background in machine learning without prior training. As such a focus is set on a clean workflow, good user guidance and a visual appealing display.
 
 \chapter{Objective}
-Create a web application and a supporting backend to interface with the CODA backend.
+The overall objectiv of Sparked is to create a web application and a supporting backend to interface with the CODA backend.
 
-The project is roughly seperated in NNNNN parts:
-\begin{itemize}
-  \item Architecture
-  \item Development
-  \item Evaluation
-\end{itemize}
-
-\section{Architecture}
 To develop Sparked an architecture has to be chosen. This includes which technologies will be used in the development process. 
 
 The architecture has to support several criteria:
 \begin{itemize}
   \item Demonstration startup
   
-  It should be easy to spin up a clean Sparked instance with clean databases for demonstration purposes. Sensible defaults should apply, to make such an instance immediatelly usable even by an untrained individual.
+  It should be easy to spin up a clean Sparked instance with empty databases for demonstration purposes. Sensible defaults should apply, to make such an instance immediatelly usable even by an untrained individual.
 
   \item Configurability
 
@@ -107,52 +99,72 @@ The architecture has to support several criteria:
 
 \end{itemize}
 
-Some common characteristics of web applications are not relevant and can be ignored:
+Some common characteristics of web applications are not relevant in this project:
 \begin{itemize}
   \item Useraccounts
 
-  All Users will operate on the same data. There will not be any useraccounts, any data uploaded to Sparked is visible to any other user.
+  All Users will operate on the same data. There will not be any useraccounts. Any data uploaded to Sparked is visible to all other users.
   \item Login
 
   The UI will be open and not contain any login features or any other form of access controll.
 \end{itemize}
 
-\section{Development}
+Coda will run on a seperate machine, connected via a bus system (Kafka). Kafka access is not part of the Sparked project. An encapsulation library (Java) will be provided.
 
-\section{Evaluation}
-
-
+Sparked contains several workflows:
 \begin{itemize}
-  \item Architecture
-    \begin{itemize}
-      \item Evaluate and select the languages and technologies for this project
-    \end{itemize}
-  \item Development
-    \begin{itemize}
-      \item Let the user create Orders and save them
-      \item Create the tasks that need to run in order to evaluate an order
-      \item Display all Orders, to show their progress and to stop, pause and unpause them
-      \item Receive and display the result of the tasks.
-      
-    \end{itemize}
-  \item Evaluation
-    \begin{itemize}
-      \item interview
-    \end{itemize}
-  \item lol?
+  \item Order creation
 
+  An order can be created. This includes the selection of all values needed to create an order. classifier, metric, test dataset and validation method with their respective parameters.
 
+  After an order is created, it will be split in tasks and put into a queue for processing. This includes persisting them to have a keep them in data on restart.
+
+  \item Order overview
+
+  View all orders, with their tasks and allows them to be paused or continued if not finished. A Sparked instance will connect to a single backend. 
+
+  \item Order evaluation
+  
+  Open and display order and task results.
 \end{itemize}
+
+It is not possible to access several CODA backends at the same time. 
+
 
 \chapter{Work packages}
 
+The project is roughly seperated in 3 parts:
 \begin{itemize}
-\item Evaluating technologies
+  \item Architecture
+  \item Development
+  \item Evaluation
+\end{itemize}
 
+
+\section{Architecture}
 \begin{itemize}
-\item Diplay graphs
+  \item UX Design
+  \item UI Design
+  \item Technolology evaluations
+  \item System architecture
+\end{itemize}  
+
+\section{Development}
+\begin{itemize}
+  \item Let the user create an orders and save them
+  \item Create the tasks needed to evaluate an order
+  \item Display all orders, show their progress and stop, pause and unpause them
+  \item Receive and display the results of an order
+  \item Configuration page
+  \item Bugfixing
 \end{itemize}
-\end{itemize}
+\section{Evaluation}
+  \begin{itemize}
+    \item Find people to interview
+    \item Create the interview questionair
+    \item Hold the interview
+    \item Evaluate the given statements
+  \end{itemize}
 
 \hspace*{-1.5in}
 \includegraphics[width=\paperwidth]{gantt-proposal-2.pdf}
