@@ -17,101 +17,31 @@
 \endgroup
 
 \datalist[entry]{nty/global//global/global}
-  \entry{Nielsen:2002:GAG:572020.572033}{inproceedings}{}
-    \name{author}{3}{}{%
-      {{hash=NJ}{%
-         family={Nielsen},
-         familyi={N\bibinitperiod},
-         given={Janni},
-         giveni={J\bibinitperiod},
-      }}%
-      {{hash=CT}{%
-         family={Clemmensen},
-         familyi={C\bibinitperiod},
-         given={Torkil},
-         giveni={T\bibinitperiod},
-      }}%
-      {{hash=YC}{%
-         family={Yssing},
-         familyi={Y\bibinitperiod},
-         given={Carsten},
-         giveni={C\bibinitperiod},
+  \entry{CODA-Steckbrief}{booklet}{}
+    \name{author}{1}{}{%
+      {{hash=SDF}{%
+         family={Sivrikaya},
+         familyi={S\bibinitperiod},
+         given={Dr.\bibnamedelima Fikret},
+         giveni={D\bibinitperiod\bibinitdelim F\bibinitperiod},
       }}%
     }
-    \list{publisher}{1}{%
-      {ACM}%
+    \list{language}{1}{%
+      {german}%
     }
-    \keyw{think aloud, usability, verbal report}
-    \strng{namehash}{NJCTYC1}
-    \strng{fullhash}{NJCTYC1}
+    \strng{namehash}{SDF1}
+    \strng{fullhash}{SDF1}
     \field{labelnamesource}{author}
     \field{labeltitlesource}{title}
-    \field{sortinit}{N}
-    \field{sortinithash}{N}
-    \field{booktitle}{Proceedings of the Second Nordic Conference on
-  Human-computer Interaction}
-    \verb{doi}
-    \verb 10.1145/572020.572033
-    \endverb
-    \field{isbn}{1-58113-616-1}
-    \field{pages}{101\bibrangedash 110}
-    \field{series}{NordiCHI '02}
-    \field{title}{Getting Access to What Goes on in People's Heads? Reflections
-  on the Think-aloud Technique}
+    \field{labelalpha}{Siv}
+    \field{sortinit}{S}
+    \field{sortinithash}{S}
+    \field{title}{Automatisierung von Machine Learning Workflows, CODA
+  Projekt-Steckbrief}
     \verb{url}
-    \verb http://doi.acm.org/10.1145/572020.572033
+    \verb http://www.gt-arc.com/wp-content/uploads/2017/08/Projekt_GT-ARC_CODA_
+    \verb de.pdf
     \endverb
-    \list{location}{1}{%
-      {Aarhus, Denmark}%
-    }
-    \field{year}{2002}
-    \warn{\item Can't use 'location' + 'address'}
-  \endentry
-
-  \entry{Norgaard:2006:UEP:1142405.1142439}{inproceedings}{}
-    \name{author}{2}{}{%
-      {{hash=NM}{%
-         family={N{\o}rgaard},
-         familyi={N\bibinitperiod},
-         given={Mie},
-         giveni={M\bibinitperiod},
-      }}%
-      {{hash=HK}{%
-         family={Hornb{\ae}k},
-         familyi={H\bibinitperiod},
-         given={Kasper},
-         giveni={K\bibinitperiod},
-      }}%
-    }
-    \list{publisher}{1}{%
-      {ACM}%
-    }
-    \keyw{industrial software development, think aloud testing, usability
-  evaluation, user-centered design}
-    \strng{namehash}{NMHK1}
-    \strng{fullhash}{NMHK1}
-    \field{labelnamesource}{author}
-    \field{labeltitlesource}{title}
-    \field{sortinit}{N}
-    \field{sortinithash}{N}
-    \field{booktitle}{Proceedings of the 6th Conference on Designing
-  Interactive Systems}
-    \verb{doi}
-    \verb 10.1145/1142405.1142439
-    \endverb
-    \field{isbn}{1-59593-367-0}
-    \field{pages}{209\bibrangedash 218}
-    \field{series}{DIS '06}
-    \field{title}{What Do Usability Evaluators Do in Practice? An Explorative
-  Study of Think-aloud Testing}
-    \verb{url}
-    \verb http://doi.acm.org/10.1145/1142405.1142439
-    \endverb
-    \list{location}{1}{%
-      {University Park, PA, USA}%
-    }
-    \field{year}{2006}
-    \warn{\item Can't use 'location' + 'address'}
   \endentry
 \enddatalist
 \endinput

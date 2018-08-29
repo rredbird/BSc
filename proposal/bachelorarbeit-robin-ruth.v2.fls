@@ -142,14 +142,12 @@ INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblate
 INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/blx-bibtex.def
 INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/biblatex.def
 INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/biblatex.def
-INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/bbx/reading.bbx
-INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/bbx/reading.bbx
+INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/bbx/alphabetic.bbx
+INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/bbx/alphabetic.bbx
 INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/bbx/standard.bbx
 INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/bbx/standard.bbx
-INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/cbx/reading.cbx
-INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/cbx/reading.cbx
-INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/cbx/authortitle.cbx
-INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/cbx/authortitle.cbx
+INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/cbx/alphabetic.cbx
+INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/cbx/alphabetic.cbx
 INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/biblatex.cfg
 INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/biblatex.cfg
 INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/biblatex/lbx/german.lbx
@@ -222,9 +220,9 @@ INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/fonts/tfm/public/
 INPUT bachelorarbeit-robin-ruth.v2.toc
 INPUT bachelorarbeit-robin-ruth.v2.toc
 OUTPUT bachelorarbeit-robin-ruth.v2.toc
-INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/base/omscmr.fd
-INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/base/omscmr.fd
 INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/fonts/tfm/public/cm/cmssbx10.tfm
+INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/base/omscmr.fd
+INPUT C:/Users/rui.DINGRUPPE/AppData/Local/Programs/MiKTeX 2.9/tex/latex/base/omscmr.fd
 INPUT gantt-proposal-2.pdf
 INPUT ./gantt-proposal-2.pdf
 INPUT ./gantt-proposal-2.pdf

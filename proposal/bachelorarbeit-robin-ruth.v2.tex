@@ -15,7 +15,7 @@
 \usepackage[english,german]{babel}
 \usepackage{csquotes}
 
-\usepackage[style=reading,sorting=nty,backend=bibtex]{biblatex}
+\usepackage[style=alphabetic,sorting=nty,backend=bibtex]{biblatex}
 \addbibresource{bibliography.bib}
 
 %\bibliographystyle{gerunsrt} % Literaturangaben nach Auftreten sortieren %{gerplain}
@@ -68,22 +68,29 @@ Matrikel--Nummer 316672\\
 
 \pagenumbering{arabic}
 \chapter{Motivation}
-With the ongoing digitalisation and the generation of big data in most aspects of society, data driven approaches to every day problems become more and more viable. One way to evaluate these large datasets is with an machine learning approach. Machine learning, though powerfull is not a wonder box. Not every machine learning approach is applicable for every problem and not every algorithm will perform in reasonable time on every data.
+With the ongoing digitalisation and the generation of big data in most aspects of society, data driven approaches to every day problems become more and more viable. One way to evaluate these large datasets is with a machine learning approach. Machine learning, though powerfull, has its own chalenges. Not every machine learning approach is applicable for every problem, not every algorithm will perform in reasonable time on every data, the list goes on.
 
-You need a lot of intimate knowledge and intuition about machine learning algorithms to select a good approach to your given problem. Knowledge and intuition that is only developed in few experts. Even then, to optimize for a given problem still requires a lot of trial and error, as most of the time the best hyperparameter settings can only be found by trial and error.
+A lot of intimate knowledge and intuition about machine learning algorithms is needed to select a good approach to your given problem. Knowledge and intuition that is only developed in few experts. Even then, to optimize for a given problem still requires a lot of trial and error, as most of the time the best hyperparameter settings can only be found by trial and error.
 
-To find a way to automate this process, DAI-Labor (Distributed Artifical Intelligence) and GTARC (German Turkish Advanced Research Center for ICT) have started CODA, a fundamental resarch project in algorithm selection and hyperparameter optimisation. (PROJEKTSTECKBRIEF!)
+To automate this process, DAI-Labor (Distributed Artifical Intelligence) and GT-ARC (German Turkish Advanced Research Center for ICT) have started CODA, a fundamental resarch project in algorithm selection and hyperparameter optimisation. \cite{CODA-Steckbrief}
 
-With this project, nicknamed Sparked, we create an interface to the CODA project, allowing machine learning enthusiasts and specialists to use the developed solutions and giving the CODA team an interface to demonstrate CODAs capabilities.
+With this project, nicknamed Sparked, we create an interface to the CODA project, allowing machine learning enthusiasts and specialists to use the developed solutions and giving the team an interface to demonstrate CODAs capabilities.
 
 As such we will provide a user interface that is usable in demonstrations and can be used by persons with a background in machine learning without prior training. As such a focus is set on a clean workflow, good user guidance and a visual appealing display.
 
+
+
+
+
+
 \chapter{Objective}
-The overall objectiv of Sparked is to create a web application and a supporting backend to interface with the CODA backend.
+The overall objectiv of Sparked is to create a web application and a supporting backend to interface with the CODA backend. 
 
-To develop Sparked an architecture has to be chosen. This includes which technologies will be used in the development process. 
+To develop Sparked an architecture has to be chosen. This includes which languages and technologies will be used in the development process. 
 
-The architecture has to support several criteria:
+\section{Architecture}
+
+The architecture has to support several use cases:
 \begin{itemize}
   \item Demonstration startup
   
@@ -109,7 +116,9 @@ Some common characteristics of web applications are not relevant in this project
   The UI will be open and not contain any login features or any other form of access controll.
 \end{itemize}
 
-Coda will run on a seperate machine, connected via a bus system (Kafka). Kafka access is not part of the Sparked project. An encapsulation library (Java) will be provided.
+Coda will run on a seperate machine, connected via a Kafka bus system. Kafka access is not part of the Sparked project. An encapsulation library written in Java will be provided.
+
+\section{Workflows}
 
 Sparked contains several workflows:
 \begin{itemize}
@@ -119,22 +128,38 @@ Sparked contains several workflows:
 
   After an order is created, it will be split in tasks and put into a queue for processing. This includes persisting them to have a keep them in data on restart.
 
+  \item Test data
+
+  While creating an order, the user may select from a pool of testdata but may also chose to upload their own sets. Uploaded files have to be redirected to CODA to allow usage in the evaluation process.
+
+  The data will not be validated in Sparked. Correctly formatted data will be assumed.
+
   \item Order overview
 
   View all orders, with their tasks and allows them to be paused or continued if not finished. A Sparked instance will connect to a single backend. 
 
   \item Order evaluation
   
-  Open and display order and task results.
+  Display an evaluation page for order and task results.
 \end{itemize}
 
 It is not possible to access several CODA backends at the same time. 
 
+Sparked does not contain any evaluation logic or machine learning support itself. As such it is dependent on the data returned from CODA via Kafka.
+
+\section{Evaluation}
+
+To evaluate the the usability and user interface decissions, a think-aloud interview will be conducted. This method helps to understand the expectations a user has at a given point in a workflow and shows if the user is able to use the application in a successfull manner without prior knowledge of the program or if help is needed.
+
+The results of the think aloud interview will be discussed in this thesis, but not influnece the actual development. Ideally a think aloud interview would be followed by a secondary development block to address the found factors. Instead the results will be collected for possible future projects.
+
+The think aloud interview is not supposed to be a statistical evaluation, the number of participants does not have to be statistically significant. 
 
 \chapter{Work packages}
 
 The project is roughly seperated in 3 parts:
 \begin{itemize}
+  \item Evaluating similar solutions
   \item Architecture
   \item Development
   \item Evaluation
@@ -145,25 +170,39 @@ The project is roughly seperated in 3 parts:
 \begin{itemize}
   \item UX Design
   \item UI Design
-  \item Technolology evaluations
+  \item Technology evaluations
+  
+  \begin{itemize}
+    \item Database
+    \item Backend language and technology
+    \item Frontend language and technology
+    \item Frontend chart library
+  \end{itemize}  
   \item System architecture
 \end{itemize}  
 
 \section{Development}
 \begin{itemize}
-  \item Let the user create an orders and save them
-  \item Create the tasks needed to evaluate an order
-  \item Display all orders, show their progress and stop, pause and unpause them
-  \item Receive and display the results of an order
+  \item Basic setup
+  \item Order creation
+  \item Datapersistence: Database access module
+  \item Basic userinterface
+  \item Testdata upload
+  \item Order overview page
+  \item Integrating Kafka access library / CODA connection
   \item Configuration page
+  \item Order evaluation
+  \item UI optimization  
   \item Bugfixing
+  \item Docker setup
+  \item Final deployment
 \end{itemize}
 \section{Evaluation}
   \begin{itemize}
-    \item Find people to interview
-    \item Create the interview questionair
+    \item Find test group
+    \item Create interview questionair
     \item Hold the interview
-    \item Evaluate the given statements
+    \item Evaluate the statements
   \end{itemize}
 
 \hspace*{-1.5in}
@@ -175,7 +214,7 @@ The project is roughly seperated in 3 parts:
 \item The thesis will be written with pdflatex.
 \item Choosing programming languages and technologies are not defined and part of the development process.
 \item Supervisors is Christian Geißler
-\item Evaluators are Prof. Dr. Albayrak and Prof. Kao \cite{inproceedings}
+\item Evaluators are Prof. Dr. Albayrak and Prof. Kao
 \end{itemize}
 
 \chapter{Appendix}
