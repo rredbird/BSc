@@ -1,4 +1,4 @@
-\chapter{Lösungskonzept}
+\chapter{Concept}
 Länge: ca. 5 - 15 Seiten\\\\
 Im Lösungskonzept wird auf konzeptueller Ebene der Weg zur Lösung der identifizierten Probleme beschrieben. Ausgangspunkt sind die Erkenntnisse der vorangegangenen Problemanalyse. Wichtig ist hierbei die Herausstellung des erzielten Neuigkeits- und Innovationswertes im Bezug auf den bisherigen Stand der Technik/Wissenschaft. Grundlage hierfür ist ebenfalls die im vorangegangenen Kapitel durchgeführte Problemanalyse. Im Lösungskapitel werden noch keine umsetzungsspezifischen Details angeführt, dies ist Aufgabe des folgenden Kapitels. Eine typische Gliederung für die Darstellung des Lösungskonzepts ist das Aufgreifen der im vorangegangenen Kapitel identifizierten Problembereiche. Der Betreuer berät bei der Darstellung des Lösungskonzepts.\\\\
 
@@ -10,3 +10,33 @@ Im Lösungskonzept wird auf konzeptueller Ebene der Weg zur Lösung der identifi
 
 \noindent Kapitelzusammenfassung am Ende:\\
 Eine Zusammenfassung erleichtert es dem Leser, die erarbeitete Lösung zu erfassen.
+
+\section{A website to present CODAs capabilities}
+Since the focus of this site is to be used as a visual aid to demonstrate CODAs capabilities, it will be designed not like a conventional web application, but instead like you would design a presentation. The focus lies on giving a single workflow through the whole application to give a nice flow from landing page down to the evaluation process.
+
+A presentation does not work quite the same as a normal web application. Initial loadtime is unproblematic since it can be loaded in advance, but loadtime once the user actually watches the site is to be avoided as it interupts the flow and gives a feeling of unprofessionality. A single page application (SPA) allows exactly that.
+
+SPAs work differently to normal websites in that they are not generated on the server and send to the client machine as a finished page but instead build the user interface in the browser with javascript. The server only serves the static page and offers stateless endpoints from which raw data can be loaded. This means that initial loadtime may be quite lengthly, as the whole page has to be loaded and rendered, but following actions will use only a minimum amount of time, as the amount of data transfered is reduced to a minimum and changes in the user interface can occur gradually, as no site change is necessary.
+
+\section{Facilitate change}
+
+This project wants to showcase a product that is still in development. Features will be expanded on and even created completely new. Even the focus on presentation may change with time. 
+
+
+
+\section{Basics}
+As with most web applications, the basic architecture is a simple frontend, backend, data management stack. Contrary to many applications is, that the business logic does not sit inside this project and is instead injected via a REST interface from the CODA backend. Consequently the backend will stay quite slim, not much more than an adapter with a bit of caching logic. Additionally, since the application will not support user or login concepts, it is essentially stateless, which makes working on the stateless http protocol much easier as we do not have to introduce a statefull layer on top.
+
+\subsection{Frontend}
+On the frontend side of
+
+As the basic architecture a single page application (SPA) frontend was chosen. SPAs work differently to normal websites in that they are not generated on the server and send to the client machine as a finished page but instead build the user interface in the browser with javascript. The server only serves the static page and offers stateless endpoints from which raw data can be loaded. This allows to keep any state outside the server, keeping it simple and barebone. 
+
+This 
+
+\subsection{Backend}
+
+
+With a SPA upfront, the backend needs to provide the appropriate REST endpoints to drive the frontend. These endpoints have been split up to allow 
+
+It contains 3 endpoints, a configuration endpoint that gives the capability to get valid server data, the list of classifiers
