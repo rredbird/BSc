@@ -1,0 +1,98 @@
+
+# Structure #
+*  On one Machine:
+ * [GUI System + [Evaluation Execution Controllers + MySQL Database for managing Settings, Evaluations, Results]]
+ * Spark Java Program to execute Testruns (= Interface between the Middleware and the Spark Master, IMPORTS Coda Framework Sourcecode)
+
+*  On another Machine:
+ * Kafka Cluster (the existing one)(optional: setup one on the Data Storage Server)
+
+*  On another Machine:
+ * Spark Master/Cluster (For now: the existing virtual one) (later: A proper one on the GPU machines)
+
+
+
+# Functional Requirements #
+
+## GENERAL PHILOSOPHY ##
+* This is a DEMO system, not a productive one (Therefore no user/group/rights management)
+* Visual Appealing and Functions are designed for demonstration, not optimized for every day usage (= Go fancy with visuals)
+* Reasonable Defaults -> Provide default selections where possible (=Makes it easier for demonstration AND usage) Approach: What would I select for someone who has no clue or needs to present this prototype?
+* Flexibility -> Consider future extentions. Experience shows, that demos are far longer used than initially expected.
+* Use automatic configuration where possible. For example: Don't use a hardcoded list of settings within the GUI if you can retrieve such a list from the middleware/backend code. That makes future addtions/changes easier, as they propagate automatically to the gui.
+
+## STARTUP / SHUTDOWN ##
+* Clean  Startup: Clear and setup database
+* Secure Startup: Load only finished results, don't load scheduled tasks. Idea: Use this for demonstrations.
+* Resume Startup: Load full database, resume suspended, waiting evaluations
+
+## SETTINGS (GUI + Control) ##
+### Manage Kafka Clusters (NOT: Creation, just the connection) ###
+* display list of known kafka servers (+offline/online indicator)
+* add Kafka Server (connection settings)
+* remove Kafka Server
+* Define default Kafka Server: oldest added Kafka Server is the default default Server (in case of first initialization or removing a default server)
+* List available (added) Kafka Servers
+* List available Topics on (available) Kafka servers (poll available servers for their topics)
+            
+### Manage Spark Clusters (GUI + Control) ###
+* add Spark Cluster/Master
+* remove Spark Cluster/Master
+* Define default Spark Cluster (oldest added Spark Cluster is the default default Cluster)
+
+## DATA IMPORT (GUI + Control + Kafka) ##
+* Upload CSV File to a new Kafka Topic
+ * User selects available Kafka-Server from list
+ * User selects csv file on his PC
+ * [Optional] User selects custom Kafka topic name
+ * [Otherwise/Default] topic name == csv file name without file extention
+ * -> Create Kafka Topic
+ * -> Read and Upload csv file to Kafka Topic (one line in the file = one record)
+            
+* Add addtional data from a CSV File to existing Kafka Topic
+ * User selects available Kafka Server and an existing Topic
+ * User selects csv file on his PC
+ * -> Check, if the dimension of the data in the csv File matches with the dimension of the records in the Kafka Topic
+ * -> If it matches: Read and Upload/Add csv file to Kafka Topic (one line in the file = one record)
+            
+# Metafeature Extraction (GUI + Control + Kafka + JavaSpark) #
+* List available Topics on (available) Kafka servers (poll available servers for their topics)
+* On demand: Button to calculate and display the metafeatures of that topic
+ * Select the spark cluster to calculate the metafeatures on (preselected = default Spark cluster)
+ * -> Calculate the metafeatures by calling the Spark Java Program (Returns: a dictionary containing the names and values of the metafeatures)
+ * -> Display all passed back metafeatures in GUI
+                
+## CREATE EVALUATION (via GUI) ##
+* Setup the Classification Problem
+ * Select the Kafka Server and Topic to be used as input dataset (from the available topics)
+ * [Default] Use Average Accuracy as target metric
+  * [Not sure / Future extention] Define the Target Metric
+ * [Default] Calculate all available Metrics
+  * [Not sure / Future extention] Select the additional Metrics to be calculated
+ * [Default] Use 10-Fold Cross-Validation
+  * [Not sure / Future extention] Select the Validation Method (10-Fold Cross-Validation, Bootstrap, k-Fold Cross-Validation)
+                
+ * Define the ML-Scenarios to be considered
+ * Basic Scenario = Estimator + Default Hyperparameters
+ * Advanced Scenario = Estimator + Hyperparameter Range + HP-Optimization Strategy (Automated Model Selection)
+ * [Not sure] Automated Scenario = Set of advanced Scenarios + Algorithm Selection Strategy (Automated Algorithm and Model Selection)
+ * [Future extention] Predict and Display Scenario Performance or Ranking next to selection
+            
+ * Select the Spark Cluster to be used for the evaluation (either hardcoded or from the #SETTINGS)
+ * -> Add the fully specified evaluation to the database ready to be executed (Status:"waiting")
+            
+## SEE AND MANAGE EVALUATIONS ##
+* Display a list of all Evaluations/Scenarios + their current status (Waiting, Paused, Running, Failed, Finished)
+ * [Optional] Sort List of evaluations by date created, status or kafka topic name
+ * [Optional] Pause a waiting Evaluation/Scenario, Resume a Evaluation/Scenario
+ * Remove a Evaluation/Scenario (Removes the DB-Entry and all connected Evaluation results)
+ * If finished/partially finished: View Evaluation Results (See # VIEW EVALUATION RESULTS)
+        
+    
+## VIEW EVALUATION RESULTS ##
+* As in CODA MML Prototype 1, but with an improved visualization
+        
+## [Not sure / Future extention] USE EVALUATION RESULTS FOR PREDICTION ##
+* For that, we would need to SAVE the final calculated models.
+
+
