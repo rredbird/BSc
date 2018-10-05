@@ -10,3 +10,8 @@
 *.latex~
 *.log
 *.toc
+*.run.xml
+*.fdb_latexmk
+*.fls
+*.log
+*.out
