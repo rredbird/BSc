@@ -73,7 +73,7 @@ With the ongoing digitalization and the generation of big data in most aspects o
 
 A lot of intimate knowledge and intuition about machine learning algorithms is needed to select a good approach to a given problem. Knowledge and intuition that is only developed in few experts. Even then, to optimize for a given problem still requires a lot of time, as most of the time the best hyperparameter settings can only be found by trial and error.
 
-To automate this process, DAI-Labor (Distributed Artificial Intelligence) and GT-ARC (German Turkish Advanced Research Center for ICT) have started CODA, a fundamental research project in algorithm selection and hyperparameter optimization. \cite{CODA-Steckbrief}
+To automate this process, GT-ARC (German Turkish Advanced Research Center for ICT) has started CODA, a fundamental research project in algorithm selection and hyperparameter optimization. \cite{CODA-Steckbrief}
 
 This project creates an interface to the CODA project, allowing machine learning enthusiasts and specialists to use the developed solutions and giving the team an interface to demonstrate CODAs capabilities.
 
@@ -113,9 +113,13 @@ Some common characteristics of web applications are not relevant in this project
   \item Login
 
   The UI will be open and not contain any login features or any other form of access control.
+
+  \item Responsiveness
+
+  The UI will not be responsiv, mobile usage will not be the focus. A resolution of at least 1024x768 will be assumed.
 \end{itemize}
 
-Coda will run on a separate machine, connected via a Kafka bus system. Kafka access is not part of this project. An encapsulation library written in Java will be provided.
+Coda will run on a separate machine, connected via Kafka-REST-Api. Kafka access is not part of this project. An encapsulation library written in Java will be provided.
 
 \section{Workflows}
 
@@ -131,7 +135,7 @@ Several workflows will be supported:
 
   While creating an order, the user may select from a pool of test data but may also chose to upload their own sets. Uploaded files have to be redirected to CODA to allow usage in the evaluation process.
 
-  The data will not be validated. Correctly formatted data will be assumed. Validation occurs within CODA.
+  The data will not be validated on upload. Validation occurs only within CODA.
 
   \item Order overview
 
@@ -144,7 +148,7 @@ Several workflows will be supported:
 
 It is not possible to access multiple CODA backends at the same time. 
 
-All evaluation logic or machine learning support will be provided by CODA. As such this project is dependent on the data returned from CODA. Neither does it contain an error logic. If an error occurs in CODA, no help will be provided besides showing the error message that comes from CODA.Correct configuration and service setup will be assumed. 
+All evaluation logic or machine learning support will be provided by CODA. As such this project is dependent on the data returned from CODA. Neither does it contain an error logic. If an error occurs in CODA, no help will be provided besides showing the error message that comes from CODA. Correct configuration and service setup will be assumed. 
 
 \section{Evaluation}
 
@@ -156,40 +160,64 @@ The think aloud interview is not supposed to be a statistical evaluation, the nu
 
 \chapter{Work packages}
 
+\section{Introduction}
+
+Define the overall goal of this project.
+
+\section{Basis}
+
+Introduce relevant concepts and definitions of Machine-Learning and usability design in general and CODA in particular. 
+
+\section{Requirement definition}
 \begin{itemize}
-  \item Selecting
+  \item Specify requirements and usecases, feedback
+
+  The general requirements have already been discussed. Specifying them and understanding the usecases for the final product will help understand the needed solution.
+
+  A feedback loop will help find and solve misunderstandings.
+
 \end{itemize}
 
-The project is roughly separated in 3 parts:
+\section{Solution approcach}
 \begin{itemize}
-  \item Architecture
-  \item Development
-  \item Evaluation
-\end{itemize}
+  \item Workflowdesign
 
+  Design workflows from an usability point of view. 
 
-\section{Architecture}
-\begin{itemize}
-  \item UX Design
   \item UI Design
-  \item Technology evaluations
+
+  Create a user interface design. Start with a design sketch for feedback and create a final design from that.
+
+  \item Architektur
+
+  Find a fitting architecture for the defined problem.
+
+  \item Identify standard problems
+
+  Many problems in IT are the same in most programms. Recognizing these and finding fitting solutions will speed up the development process and raise the overall code quality. 
   
-  \begin{itemize}
-    \item Database
-    \item Backend language and technologies
-    \item Frontend language and technologies
-    \item Frontend chart library
-  \end{itemize}  
-  \item System architecture
-  \item Evaluating similar programs
+\end{itemize}
 
-\end{itemize}  
+\section{State of the art}
 
-\section{Development}
+\begin{itemize}
+  \item Analysing projects with a similar focus on ai and data analysis.
+
+  Analysing other programs with the same overall purposes can help find good solutions and may also help identify pitfalls.
+
+  \item Find common problems and standard solutions. 
+  
+  Selecting the right languages and libraries will help circumvent problems and will reduce the workload to the parts that are actually unique in this project.
+\end{itemize}
+
+\section{Implementation}
+
+The general setup is very similar in all web programs and software projects. CODA connection, Docker setup and the deployment are requirements that are already defined.
+
 \begin{itemize}
   \item Basic setup
   \item Order creation
-  \item Data persistence: Database access module
+  \item Data persistence
   \item Basic user interface
   \item Test data upload
   \item Order overview page
@@ -201,13 +229,27 @@ The project is roughly separated in 3 parts:
   \item Docker setup
   \item Final deployment on DAI server
 \end{itemize}
-\section{Think aloud interviews}
-  \begin{itemize}
-    \item Find test group
-    \item Create interview questionnaire
-    \item Hold the interview
-    \item Evaluate the statements
-  \end{itemize}
+
+\section{Evaluation}
+
+\begin{itemize}
+  \item Create a questionnaire.
+  
+  Create questions and tasks for the interviewed. They should show if a new user is capable of navigating the application, to identify pain points and if they can complete a given objective.
+
+  \item Find a testgroup for think aloud interview
+
+  Select a set of 2-4 people of possible futute users to conduct the interview with.
+
+  \item Evaluate interview
+
+  Where are problem points in the program, where there objectives the interviewed could not solve.
+
+\end{itemize}
+
+\section{Conclusion and Finalization}
+
+Finalize the project, discuss possible future changes on the basis of the think aloud interview.
 
 \chapter{Schedule}
 
