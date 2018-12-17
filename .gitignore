@@ -15,6 +15,7 @@
 *.fls
 *.log
 *.out
+*.gz
 thesis/Bachelorarbeit-Robin-Ruth.out
 thesis/Bachelorarbeit-Robin-Ruth.lot
 thesis/Bachelorarbeit-Robin-Ruth.lof
@@ -31,3 +32,4 @@ proposal/bachelorarbeit-robin-ruth.v2.bbl
 thesis/Bachelorarbeit-Robin-Ruth.idx
 thesis/Bachelorarbeit-Robin-Ruth.ilg
 thesis/Bachelorarbeit-Robin-Ruth.ind
+thesis/Bachelorarbeit-Robin-Ruth.synctex.gz
