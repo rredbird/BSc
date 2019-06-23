@@ -1,3 +1,90 @@
-\chapter{Umsetzung}
-Länge: ca. 5-25 Seiten\\\\
-In diesem Kapitel wird die Umsetzung des entwickelten Lösungskonzeptes in einer konkreten Umgebung, beispielsweise Systemumgebung dargestellt. Die Trennung in Lösungskonzept und Umsetzung ist Bestandteil strukturierten Arbeitens und wird konkret durch die Notwendigkeit begründet, das Lösungskonzept nicht durch Probleme zu verwässern, die bei der Umsetzung auftauchen können, aber keinen Einfluss auf die Anwendbarkeit des Lösungskonzepts haben. Ein typisches Beispiel sind hierfür politische Rahmenbedingungen usw. 
+\chapter{Implementation}
+\section{Technologies}
+With a clear picture on the requirements and the aspired architecture, it is time to talk about technology. What Programming languages will be used and what are the main libraries.
+\subsection{Frontend}
+One of the requirements is for Sparked to be a web application. Therefor the frontend will ultimately be in html, javascript and css, the web stack. With Flash and Silverlight support finally ending in 2020 and 2021 respectively  \cite{silverlight} \cite{flash}  there really is no alternative. There are however several ways how to get to this html, javascript and css.
+\subsubsection{SPA}
+There are numerous ways to create dynamic websites. One of them is the use of a Single Page Application (SPA) framework. SPAs work in such a way that the main page is only loaded and the Document Object Model (DOM) only evaluated once by the browser. Afterwards javascript is used to make server calls, animate object, bind event handler to actions, change the DOM and do everything else that is required for the website to function. This means that the UI is effectively been built in the browser on the client machine.
+\subsubsection{Angular}
+For this project the choice of SPA framework fell on Angular. This is not for any specific technological reason, as all the well-known SPA frameworks can support anything needed by this project, instead the choice was made because of previous knowhow existed. \\
+Angular is maintained by google, was first released in 2009 [7] and is available under a modified MIT license [8], with the newest Version being 8.0.0, released on May 28th, 2019 [9]. Sparked uses Version 7.2.3 as it was the newest at development time. \\
+Angular uses TypeScript as programming language. TypeScript is a superset of JavaScript extending it with features like inheritance and strongly typed variables. It being a superset means that all valid JavaScript code is also valid in TypeScript. That is not true the other way. Instead TypeScript uses a preprocessor to compile TypeScript code into JavaScript before deploying it to the client. \\
+TypeScript is an open source project available under the Apache License 2.0 [10] and was first released by Microsoft in 2012 and exists now in Version 3.4 [11]. Sparked uses the Version 3.2.4. 
+\subsubsection{Node Package Manager}
+When working with angular it is recommended to use the NodeJS and the node package manager (npm) to install and manage angular and the libraries used by angular.
+\subsubsection{ChartJS}
+As seen in the previous chapter, Sparked needs a way to display data as graphs. There are a lot of charting frameworks available. From commercial libraries such as Highcharts, over free software like google charts to free open source projects like Chartist. There are some characteristics for a charting framework to be considered in this project. The library should be free to use without constraints like watermarks. A couple of chart types must be included and while scatter-, line- or box charts are rather standard, box and whiskers plots are only supported in some libraries.\\ 
+For this project the decision fell on ChartJS. It is available under the MIT license [12], can be used with the node package manager and has an active community behind it [13]. It supports all standard plot types and with the help of an extension, chartjs-chart-box-and-violin-plot, it supports box and whiskers plots. The version used is 2.8.0.
+\subsection{Backend}
+Having looked at the client-side technologies it is now time to do the same for the server side. 
+\subsubsection{Java}
+Almost every major programming language today supports natively or has libraries, that allow to create a simple CRUD webserver. As such the question which language to use is not so much dependent on the features of the language itself but more on the level of knowledge current and future developers might have in it. With this Java becomes a save bet as it is one of the most widely used programming languages [15]. \\
+The Java backend needs to supply data and functionality for the frontend SPA. Using Spring Boot 
+Using Spring Boot in version 2.1.1 allows to easily create a Rest interface
+\subsubsection{Database}
+For data storage MongoDB, a document based no-sql database, was chosen. MongoDB is a tried technology with existing drivers for Java. The main benefit of a schema-less database like MongoDB is, that changes in the data do not need to be consciously reflected into the database. This makes changes to Sparked easier, as it reduces the points in code that need to be changed if the CODA API where to change. For the database driver, mongodb-driver in version 3.8.2 was chosen.
+\subsubsection{Serialization}
+The Sparked backend gets data from the Coda API on one side and sends data to the UI on the other. Both are sent in JavaScript Object Notation or JSON format. To convert said data from JSON to what is often called a POJO, a plain old java object, to work with it on the Server and back to JSON, a serialization function is needed. Using Jackson this process can be automated converting JSON objects to Java objects without the need to write converters. Jackson will instead try to convert these automatically using reflection and a combination of conventions and attributes to map JSON to Java values. This has the added benefit, that a change in the underlying API in many cases only needs for the transformed object to be adapted. In comparison the change of a handwritten serializer or deserializer would take up much more time. 
+\subsubsection{Swagger}
+The Sparked backend publishes an API for consumption by the angular frontend. While this is an internal API and does not technically need to be documented, it will be helpful for future developers to see all valid endpoints and their usage in one spot. Swagger is the tool of choice when it comes to API documentation. It creates a page at the relative path \textit{\/swagger-ui.html\#/} that shows an overview of all endpoints grouped by controller, supported parameters, responses that can be expected and the data structures of return values. This information should enable a frontend developer to create a change a UI or even create a new one without having to go into the code themselves. 
+ 
+\section{Coda API}
+The machine learning functionality of Sparked comes fully from CODA via the CODA API [See Appendix A]. The CODA API returns JSON Objects, which is where Jackson comes into play. Jackson maps objects from JSON to the corresponding Java object. It makes the connection either by property name or by using attributes.\\
+\begin{lstlisting}
+{
+	"id": "class specific specificity",
+	"highValueBetter": true,
+	"isScalarMetric": false,
+	"isClassSpecific": true
+},
+\end{lstlisting}
+
+\begin{lstlisting}
+@JsonIgnoreProperties(ignoreUnknown = true)
+@JsonInclude(JsonInclude.Include.NON_NULL)
+public class Metric {
+    private String id;
+    private Boolean highValueBetter;
+    private Boolean isScalarMetric;
+    private Boolean isClassSpecific;
+\end{lstlisting}
+
+This is a fast and reliable way to serialize and deserialize the data. Since it maps by using known names, this method only works with known named properties. For properties where the property name is not constant, this does not work. CODA for example puts an id before the classifier parameters. For this Jackson supports custom deserializers. 
+Code example: The 
+\begin{lstlisting}
+"results": {
+"bestConfiguration": {
+     		"params": {
+              "dtc_6b195ee4e3bb__seed": "159147643",
+              "dtc_6b195ee4e3bb__cacheNodeIds": "false",
+              "dtc_6b195ee4e3bb__checkpointInterval": "10",
+              "dtc_6b195ee4e3bb__impurity": "gini",
+\end{lstlisting}
+
+Having a component do what otherwise would be many hundred lines of custom code is already worth adding a library, but the main benefit here becomes apparent, when trying to expand the CODA data structures. Because the database is schema less and the frontend is compiled into JavaScript, neither of these parts need to be changed to support additional fields in CODAs data structures. The only change needed is to create matching variables as well as getter and setter functions in the corresponding java class and the values should become accessible in the frontend.
+Of course, this only works on auto mapped classes. For the evaluation result data both the matching class as well as the deserializer, EvaluationResultMetricDeserializer, must be edited. Changing the  deserializer is not the biggest issue, but it is to be noted, that for an earlier version of CODA API several deserializer classes existed with one having more than a hundred line of low level code to traverse and read json nodes. Changing a class like that can quickly become hard and is an easy place to make errors. 
+Configuration
+XXXXXXX CHANGES HERE
+To load the properties, the standard java class Properties (java.utils.Properties) is used. 
+
+-	Spring Boot Startup 
+-	Logging
+-	Properties
+-	MongoDB 
+-	Dependency Injection
+-	Interface Usage?
+-	Controller / API Description
+
+-	General Structure
+o	Order Generator
+o	Orders
+o	Order
+o	Landing Page
+o	Order Generation Service
+o	Navigator Service
+o	Backend Service
+-	DTOs
+-	ChartJS
+-	Sass?
+-	Translation
+-	Listing Package.json

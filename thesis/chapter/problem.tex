@@ -1,31 +1,122 @@
 \chapter{Problem analysis}
-Länge: ca. 5 - 15 Seiten\\\\
-Das Kapitel Problemanalyse dient dazu, das in der Einleitung identifizierte und eingegrenzte Problem auf seine Ursachen zurückzuführen und so Lösungsmöglichkeiten zu entwickeln. Hierdurch wird die Problembezogenheit der entwickelten Lösung sichergestellt. Wenn möglich, ist durch eine Literaturrecherche nachzuweisen, dass bisher keine geeigneten Lösungen existieren. Der Betreuer hilft bei der Entscheidung, ob die Problemanalyse ausreichend tief erfolgt ist. Häufig führt eine hinreichend genaue Problemanalyse zu präziseren und damit kürzeren Lösungskonzepten.\\\\
 
-\noindent Kapitelzusammenfassung am Ende:\\
-Der Übergang von der Problemanalyse zur Konzeptentwicklung stellt eine wichtige Nahtstelle innerhalb der Arbeit dar, da von einer betrachtend-analysierenden Perspektive auf eine konstruktiv-kreative Perspektive gewechselt wird. Daher empfiehlt es sich, an dieser Stelle die Ergebnisse der Problemanalyse zusammenzufassen.
+\section{Requirements}
+One of the surprisingly hard tasks in software development is the requirement analysis. In this section the reason for development will be described and a list of functional and non-functional requirements given, to further define the scope of this project. At the end a target audience will be proposed for which this software is being written. 
+
+\begin{description}
+\item [At the start of this project a couple of top-level requirements had been given.]\hfill \\
+Create a UI for the existing software CODA to showcase CODAs capabilities to give visual support in talks and demonstrations.
+The main use case for Sparked is clear. It is to take the capabilities of CODA in the form of its web api and create an interface on top. An important factor here is the target audience, people who are very tech savvy and familiar with machine learning. Equally important is the mode of consumption, not open for general use, but either by a single user as the lecturer or a small group of users for a limited amount of time. 
+\end{description}
 
 
-- Changes in the requirements make a redevelopment necessary. This is impractical and to be avoided in the future. The usage of well known technologies will allow more people to easily work on this project. Modularisation will help to allow changes at one side, without the need to propagate those changes throughout the entire application.
+\begin{description}
+\item [Sparked should support a simple and configurable startup.]\hfill \\
+Running sparked locally or connecting it to a different instance of Coda should be possible changes in code and without recompiling.
+\item [Allow for a clean slate startup.]\hfill \\
+Since its use case is to run for presentations, it is required to start an instance without any old data in it, a clear state, that will always look and function the same. Such a start should create all necessary files, database tables and related items, removing any remnants of earlier runs.
+\end{description}
 
-\section{A website to present CODAs capabilities}
-- This is not a classical web application but a website that is mainly used for presentations. Visual components are very important. Making everything look nice has a very high priority.
+\begin{description}
+\item [Sparked is a web application that runs in docker on a Linux system.]\hfill \\
+For Sparked it had been decided, that it may run as a web application to be accessed via browser and that the server side should be hostable in docker on Linux to ensure compatibility.
+\end{description}
 
-- Should help evaluate how good a selected optimization was. 
+\begin{description}
+\item [Not for productive use.]\hfill \\
+Reducing the scope of the project in key areas such as security and user management.
+\end{description}
 
-\section{Facilitate change}
-- Changes in CODA backend should propagate to the ui without changes to the code. 
-- Changes to the code should be made as easy as possible.
-- Wants to showcase CODA, but CODA will change.
+\subsection{Nonfunctional Requirements}
+It is important to note, that CODA is not a finished product, but a project that is currently in development. That includes both soft changes like adding new datasets or classifiers to the existing ones, but also changes to endpoints or the structure of data. From this the first non-functional requirement arises:
 
-\section{questions}
 \begin{itemize}
-    \item Focus on showing it in a presentation or allowing access as a presentation object site
-    \item Do we expect random traffic of people who have not been introduced to CODA?
-    \item Should there be a an introduction to the CODA project on the page?
-    \item Should the basic concepts be described or can we assume professionals only?
-    \item Is this at all wanted for productiv work or just for presentations? (Kickoff requrements say demo system, not for every day use.)
+\item Create Sparked in a way, that favors extensibility.
 \end{itemize}
 
+Using Sparked as a demonstration object in presentations necessitates a certain UI paradigm:
+\begin{itemize}
+\item UI must be visible displaying via beamer in a not ideally lit room.
+\end{itemize}
+Directly from the main objectives it can be concluded that
+\begin{itemize}
+\item All configuration should be doable via config files without recompiling the project and
+\item Necessary files and database tables must be automatically created as needed.
+\end{itemize}
+
+\subsection{Functional Requirements}
+Functionally Sparked needs to support the capabilities that the CODA api publishes. 
+\begin{itemize}
+\item	Creating an order
+\item	Starting an order
+\item	Listing existing orders
+\item	Displaying the evaluation data of a completed order
+\end{itemize}
+
+\section{User Personas}
+When trying to create a user interface, it is necessary to think of the users that will interact with the system and try to see the software through their eyes. A helpful tool in that regard is the use of user personas, one or more users that represent the archetypes of all persons interacting with the system. 
+Ideally this would begin by gathering information on users, evaluating web analytics data, interviewing real users and conducting surveys. Unfortunately, this goes beyond the scope of this project which leaves the possibility to create personas from assumptions about the userbase alone. This has the danger to reinforce already existing biases and does nothing to validate the existing assumptions on scope and usage of the project but is still worthwhile, helping to view the design process through the lens of different people.
+The goal in creating personas is to represent much of the user base and have a persona for every major user group. For Sparked these groups are:
+\begin{itemize}
+\item	The presentation viewer
+\item The presenter
+\item The developer
+\end{itemize}
+
+\noindent
+\textbf{Nora}, 26
+\begin{itemize}
+\item	Graduate student
+\item	Advanced knowledge in machine learning
+\item	Wants to get an understanding of CODA
+\item	Watches a presentation about CODA
+\end{itemize}
+Nora had an interesting discussion about automated hyperparameter optimization with a CODA team member and has been invited to view a presentation to learn more about the project. She is knowledgeable in AI and works on a research project in machine learning, but not specifically in hyperparameter optimization. \\
+
+\noindent
+\textbf{Jack}, 27
+\begin{itemize}
+\item	Researcher
+\item	Self-taught knowledge of server systems 
+\item	Advanced knowledge of machine learning
+\item	CODA expert
+\item	Wants to top of his CODA presentation with a hands-on example
+\end{itemize}
+
+Jack works with CODA on daily basis. He knows all ins and outs of the program and has advanced knowledge in ML. He has some experience in server systems but more from necessity than from interest. He likes efficiency and generally only has a small amount of time to prepare for a presentation. In preparation for his presentation he needs to setup a new instance of Sparked, since the last one has been shut down last week when it was not used. \\
+
+\noindent
+\textbf{Tim}, 23
+\begin{itemize}
+\item	Writing his bachelor thesis
+\item	Only minor knowledge in machine learning
+\item	Strong foundation in programming languages learned in university
+\item	Some experience programming outside of university in a handful of small personal projects
+\end{itemize}
+
+Tim has been tasked to change Sparked to support the changes that have happened in Coda over the course of 2 years. He likes to code and has already created a basic android app and several web apps in his free time. He has little experience in expanding on a foreign codebase.
+These Personas represent the target audience and will be used to view Sparked through the eyes of the user.
+
 \section{Summary}
-Create a demosystem that allows to showcase CODAs capabilities. It should make it easy to use in presentations and be designed to be flexible 
+This section has defined both the top-level requirements and the target audience while proposing a way to take the information on the target audience to help in future decision-making using personas.
+Top-level requirements can be listed as:
+\begin{itemize}
+\item	Create and start an order
+\item	List existing orders
+\item	Display the evaluation data of a completed order
+\item	Facilitate extensibility of the codebase
+\item	UI must be visible displaying via beamer in a not ideally lit room
+\item	All configuration should be doable via config files without recompiling the project
+\item	Necessary files and database tables will be automatically created as needed
+\item	Frontend is a website 
+\item	Server side is running in a Linux docker container
+\end{itemize}
+
+The target audience has been defined and representational user personas been created:
+\begin{itemize}
+\item	The presentation viewer, represented through Nora
+\item	The presenter, represented through Jack
+\item	The developer, represented through Tim
+\end{itemize}
+
+
