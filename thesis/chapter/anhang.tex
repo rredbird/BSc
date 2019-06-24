@@ -1,13 +1,44 @@
 \phantomsection
-\addcontentsline{toc}{chapter}{\numberline{}Anhang}
-\chapter*{Anhang}
-
-Hier befinden sich für Interessierte Quelltexte sowie weitere zusätzliche Materialien wie Screenshots oder auch weiterführende Informationen.
+\addcontentsline{toc}{chapter}{\numberline{}Appendix}
+\chapter*{Appendix}
 
 \phantomsection
-\addcontentsline{toc}{section}{\numberline{A} Anhang: Quelltexte}
-\section*{A Anhang: Quelltexte}
 
-\subsection*{Beispiel.java}\label{stegotext}\lstinputlisting[language=JAVA]{programming/Beispiel/Beispiel.java}
 
+\appendix
+
+\section*{CODA API}
+\label{appendix:CodaAPI}
+\begin{figure}
+	\includegraphics[width=\textwidth]{CodaAPI-GET.png}
+	\caption{CODA GET endpoints}
+\end{figure}
+\begin{figure}
+	\includegraphics[width=\textwidth]{CodaAPI-POST.png}
+	\caption{CODA POST endpoints}
+\end{figure}
+
+\section*{Log4j configuration file}
+\label{appendix:Log4j}
+\begin{lstlisting}[caption={Log4j configuration file.},captionpos=b]
+<?xml version="1.0" encoding="UTF-8"?>
+<Configuration>
+  <Appenders>
+    <File name="fileAppender" fileName="logs/log.log">
+        <PatternLayout pattern="%d{yyyy-MM-dd HH:mm:ss.SSS} %-5level - %msg%n"/>
+    </File>
+</Appenders>
+
+  <Loggers>
+    <Root level="warn">
+    </Root>
+
+    <Logger name="coda.shared" level="debug">
+        <AppenderRef ref="fileAppender" />
+    </Logger>
+  </Loggers>
+</Configuration>
+\end{lstlisting}
 \newpage
+
+
